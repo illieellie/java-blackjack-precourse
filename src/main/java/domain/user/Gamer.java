@@ -8,7 +8,7 @@ import java.util.List;
 import static domain.card.Symbol.ACE;
 
 public class Gamer {
-    private static final int GOAL_VALUE = 21;
+    public static final int GOAL_VALUE = 21;
     private static final int ACE_VALUE_1 = 1;
     private static final int ACE_VALUE_11 = 11;
 
