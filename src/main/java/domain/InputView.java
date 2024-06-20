@@ -5,7 +5,7 @@ import java.util.*;
 public class InputView {
     private InputView(){}
     // 게임 참가자 입력
-    static List<String> getGamers(){
+    public static List<String> getGamers(){
         List<String> gamers = new ArrayList<>();
         // 입력
         Scanner input = new Scanner(System.in);
@@ -16,7 +16,7 @@ public class InputView {
         return gamers;
     }
     // 카드를 받을지 y or n
-    static String getCard(){
+    public static String getCard(){
         // 입력
         Scanner input = new Scanner(System.in);
         String s = input.nextLine();

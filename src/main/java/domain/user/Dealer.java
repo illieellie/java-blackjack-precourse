@@ -10,8 +10,9 @@ import java.util.List;
  */
 public class Dealer extends Gamer{
 
-    private final String name = "딜러";
-    public Dealer() {}
+    public Dealer(String name, double bettingMoney) {
+        super(name, bettingMoney);
+    }
 
 //    public void addCard(Card card) {
 //        cards.add(card);

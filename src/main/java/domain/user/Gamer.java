@@ -11,9 +11,19 @@ public class Gamer {
     private static final int GOAL_VALUE = 21;
     private static final int ACE_VALUE_1 = 1;
     private static final int ACE_VALUE_11 = 11;
-    final List<Card> cards = new ArrayList<>();
 
-    public Gamer() {
+    final List<Card> cards = new ArrayList<>();
+    final double bettingMoney;
+
+    public String getName() {
+        return name;
+    }
+
+    final String name;
+
+    public Gamer(String name, double bettingMoney) {
+        this.name = name;
+        this.bettingMoney = bettingMoney;
     }
 
     // 게이머들은 아래와 같은 공통 기능을 갖는다
