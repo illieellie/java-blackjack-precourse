@@ -10,9 +10,9 @@ public class InputView {
         // 입력
         Scanner input = new Scanner(System.in);
         String s = input.nextLine();
-        input.close();
+        //input.close();
         // 쉼표 분리, gamers에 addAll
-        gamers.addAll(List.of(s.split(",")));
+        Collections.addAll(gamers, s.split(","));
         return gamers;
     }
     // 카드를 받을지 y or n
@@ -20,7 +20,7 @@ public class InputView {
         // 입력
         Scanner input = new Scanner(System.in);
         String s = input.nextLine();
-        input.close();
+        //input.close();
 
         return s;
     }
