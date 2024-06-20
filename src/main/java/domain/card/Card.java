@@ -7,8 +7,15 @@ import java.util.Objects;
  */
 public class Card {
     private final Symbol symbol;
-
     private final Type type;
+
+    public Type getType() {
+        return type;
+    }
+
+    public Symbol getSymbol() {
+        return symbol;
+    }
 
     public Card(Symbol symbol, Type type) {
         this.symbol = symbol;

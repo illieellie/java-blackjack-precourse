@@ -10,6 +10,7 @@ import java.util.List;
  */
 public class Dealer extends Gamer{
 
+    private final String name = "딜러";
     public Dealer() {}
 
 //    public void addCard(Card card) {
