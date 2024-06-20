@@ -1,8 +1,7 @@
 package domain;
 
 import domain.card.Card;
-import domain.user.Dealer;
-import domain.user.Player;
+import domain.user.Gamer;
 
 import java.util.List;
 
@@ -47,8 +46,28 @@ public class OutputView {
         System.out.println(" - 결과: " + result);
     }
 
-    public static void printResultSummary(String name, int win, int lose){
-        // gamer를 구현하고 나서 마지막에 구현하기로 한다.
+    public static void printResultSummary(List<Gamer> gamers, int []result){
+        System.out.println("## 최종 승패");
+        for(int i = 0; i<gamers.size(); i++){
+            String name = gamers.get(i).getName();
+            System.out.print(name + ": ");
+            if(i==0) {
+                // 딜러
+                System.out.print(result[i]+"승 ");
+                System.out.println(gamers.size()-1-result[i]+"패");
+            } else if (i!=0) {
+                // 플레이어
+                System.out.println(resultDiv(result[i]));
+
+            }
+        }
+    }
+
+    public static String resultDiv(int d){
+        if(d==0){
+            return "패";
+        }
+        return "승";
     }
 
     public static void printCard(List<Card> obj){

@@ -14,6 +14,8 @@ import java.util.List;
 public class Main {
 
     public static final int GOAL_VALUE = 21;
+    public static final int HEAD = 0;
+    public static final int DEALER_RULE = 16;
 
     public static void main(String[] args) {
         // 카드 준비
@@ -41,28 +43,49 @@ public class Main {
             OutputView.printMent5(gamers.get(i).getName(), gamers.get(i).getAllCards());
         }
         // 돌아가면서 카드를 받을지 물어보며 카드를 받는다
-        int head = 0;
+       
         // 플레이어
         for (int i = 1; i < gamers.size(); i++) {
             Gamer gamer = gamers.get(i);
             OutputView.printMent3(gamer.getName());
             String answer = InputView.getCard();
             if (answer.equals("y")) {
-                gamer.addCard(cards.get(head));
+                gamer.addCard(cards.get(HEAD));
             }
-            cards.remove(head);
+            cards.remove(HEAD);
             OutputView.printMent5(gamer.getName(), gamer.getAllCards());
         }
         // 딜러는 가지고 있는 카드합이 16이하이면 한장의 카드를 더 받는다.
-        Gamer dealer = gamers.get(head);
+        Gamer dealer = gamers.get(HEAD);
         int sum = dealer.checkCard();
-        if (sum <= 16) {
-            dealer.addCard(cards.get(head));
-            cards.remove(head);
+        if (sum <= DEALER_RULE) {
+            dealer.addCard(cards.get(HEAD));
+            cards.remove(HEAD);
             OutputView.printMent6();
         }
         // 결과 출력
-
-
+        int dealerScore = 0;
+        int []result = new int[gamers.size()];
+        for(int i= 0; i<gamers.size(); i++){
+            Gamer gamer = gamers.get(i);
+            int gamerScore = gamer.checkCard();
+            OutputView.printResultDetail(gamer.getName(), gamer.getAllCards(), gamerScore);
+            if(i==0){dealerScore=gamerScore;}
+            else if(i!=0){
+                // 플레이어부터 딜러와 비교하여 대결
+                // 21을 초과했다면 진거임
+                if(dealerScore>GOAL_VALUE) { // 딜러 루즈
+                    result[i]++;
+                } else if (gamerScore>GOAL_VALUE) { // 플레이어 루즈
+                    result[HEAD]++;
+                } else if(dealerScore>gamerScore){ // 플레이어 루즈
+                    result[HEAD]++;
+                } else if(dealerScore<gamerScore){ // 딜러 루즈
+                    result[i]++;
+                }
+            }
+        }
+        // 최종 승패 출력 
+        OutputView.printResultSummary(gamers,result);
     }
 }

@@ -14,12 +14,10 @@ public class Gamer {
 
     final List<Card> cards = new ArrayList<>();
     final double bettingMoney;
-
+    final String name;
     public String getName() {
         return name;
     }
-
-    final String name;
 
     public Gamer(String name, double bettingMoney) {
         this.name = name;
