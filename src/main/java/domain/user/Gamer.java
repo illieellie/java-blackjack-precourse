@@ -20,4 +20,6 @@ public class Gamer {
         // 자신의 카드 체크
         // this.cards
     }
+
+    // 모든 카드를 반환한다.
 }
