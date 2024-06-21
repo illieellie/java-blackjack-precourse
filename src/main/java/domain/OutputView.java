@@ -70,14 +70,14 @@ public class OutputView {
         }
     }
 
-    public static String resultDiv(int d){
+    private static String resultDiv(int d){
         if(d==0){
             return "패";
         }
         return "승";
     }
 
-    public static void printCard(List<Card> obj){
+    private static void printCard(List<Card> obj){
         int size = obj.size()-1;
         for(int i = 0; i<=size; i++){
             Symbol s = obj.get(i).getSymbol(); // 값 // A, K, Q, J 변환
@@ -92,7 +92,7 @@ public class OutputView {
         }
     }
 
-    public static String convertLanguage(Type t){
+    private static String convertLanguage(Type t){
         String s = "스페이드";
         if(t.equals(DIAMOND)) {
             s = "다이아몬드";
@@ -103,14 +103,14 @@ public class OutputView {
         }
         return s;
     }
-    public static boolean containSpecial(Symbol s){
+    private static boolean containSpecial(Symbol s){
         if(s.equals(Symbol.ACE)||s.equals(Symbol.JACK)||s.equals(Symbol.KING)||s.equals(Symbol.QUEEN)){
             return true;
         }
         return false;
     }
 
-    public static void printList(List<String> obj) {
+    private static void printList(List<String> obj) {
         int size = obj.size()-1;
         for(int i = 0; i<=size; i++){
             System.out.print(obj.get(i));

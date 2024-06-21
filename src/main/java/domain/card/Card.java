@@ -9,6 +9,12 @@ public class Card {
     private final Symbol symbol;
     private final Type type;
 
+
+    public Card(Symbol symbol, Type type) {
+        this.symbol = symbol;
+        this.type = type;
+    }
+
     public Type getType() {
         return type;
     }
@@ -17,10 +23,6 @@ public class Card {
         return symbol;
     }
 
-    public Card(Symbol symbol, Type type) {
-        this.symbol = symbol;
-        this.type = type;
-    }
 
     // TODO Card 관련 추가 기능 구현
 

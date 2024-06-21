@@ -11,17 +11,26 @@ public class Gamer {
     public static final int GOAL_VALUE = 21;
     private static final int ACE_VALUE_1 = 1;
     private static final int ACE_VALUE_11 = 11;
-
+    private int resultScore;
     final List<Card> cards = new ArrayList<>();
     final double bettingMoney;
     final String name;
-    public String getName() {
-        return name;
-    }
 
     public Gamer(String name, double bettingMoney) {
         this.name = name;
         this.bettingMoney = bettingMoney;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setResultScore(int resultScore) {
+        this.resultScore = resultScore;
+    }
+
+    public int getResultScore() {
+        return resultScore;
     }
 
     // 게이머들은 아래와 같은 공통 기능을 갖는다
@@ -38,20 +47,17 @@ public class Gamer {
         boolean hasAce = false;
         for(Card card : cards){
             if(card.getSymbol()==ACE){
-                // 가장 마지막에 계산해야할 카드
-                hasAce = true;
-                continue;
+                // 1을 더하는게 가까운지 11을 더하는게 가까운지
+                sum+=choiceAceValue(sum);
+            }else if(card.getSymbol()!=ACE) {
+                sum += card.getSymbol().getScore();
             }
-            sum+=card.getSymbol().getScore();
         }
-        if(hasAce==true){
-            // 1을 더하는게 가까운지 11을 더하는게 가까운지
-            sum+=choiceAceValue(sum);
-        }
+
         return sum;
     }
 
-    public int choiceAceValue(int sum){
+    private int choiceAceValue(int sum){
         int result = 0;
         if(sum+ACE_VALUE_11<=GOAL_VALUE){
             result = ACE_VALUE_11;
